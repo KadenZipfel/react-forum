@@ -1,0 +1,16 @@
+const express = require('express');
+const router = express.Router();
+
+const {
+  createPost,
+  getPost,
+  deletePost
+} = require('../handlers/post');
+
+router.route('/').post(createPost);
+
+router.route('/:post_id')
+  .get(getPost)
+  .delete(deletePost);
+
+module.exports = router;
