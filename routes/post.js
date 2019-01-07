@@ -4,12 +4,14 @@ const router = express.Router();
 const {
   createPost,
   getPost,
+  getPosts,
   deletePost
 } = require('../handlers/post');
 
 router.route('/').post(createPost);
+router.route('/').get(getPosts);
 
-router.route('/:post_id')
+router.route('/:id')
   .get(getPost)
   .delete(deletePost);
 

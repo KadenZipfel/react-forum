@@ -12,18 +12,19 @@ exports.signup = (req, res) => {
         console.log(err);
       }
       passport.authenticate('local')(req, res, () => {
-        res.redirect('/');
+        // res.redirect('/');
       });
       console.log(user);
   });
 };
 
 exports.signin = passport.authenticate('local', {
+  // Change redirects to appropriate locations
   successRedirect: '/',
   failureRedirect: 'back'
 });
 
 exports.signout = (req, res) => {
   req.logout();
-  res.redirect('/');
+  // res.redirect('/');
 }

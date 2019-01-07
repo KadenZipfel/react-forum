@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth');
+const postRoutes = require('./routes/post');
 const db = require('./models');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
@@ -22,15 +23,7 @@ passport.serializeUser(db.User.serializeUser());
 passport.deserializeUser(db.User.deserializeUser());
 
 app.use('/api/auth', authRoutes);
-
-app.get('/api/posts', (req, res) => {
-  db.Post.find({}, (err, posts) => {
-    if(err) {
-      return console.log(err);
-    }
-    return res.status(200).json(posts);
-  })
-});
+app.use('/api/posts', postRoutes);
 
 const PORT = process.env.PORT || 5000;
 
