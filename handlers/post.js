@@ -10,6 +10,7 @@ exports.createPost = (req, res) => {
     }
     // post.author.id = user._id
     // post.author.username = user.username
+    // post.save();
     console.log('Post added to db: ', post);
     // res.redirect somewhere appropriate
   });
@@ -36,9 +37,8 @@ exports.getPosts = (req, res) => {
 exports.deletePost = (req, res) => {
   db.Post.findByIdAndRemove(req.params.id, (err) => {
     if(err) {
-      console.log(err);
-    } else {
-      console.log('Post deleted');
+      return console.log(err);
     }
+    console.log('Post deleted');
   });
 };

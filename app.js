@@ -4,6 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth');
 const postRoutes = require('./routes/post');
+const commentRoutes = require('./routes/comment');
 const db = require('./models');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
@@ -11,6 +12,7 @@ const LocalStrategy = require('passport-local');
 app.use(cors());
 app.use(bodyParser.json());
 app.use(require('express-session')({
+  // We'll hide the secret later
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: false,
@@ -24,6 +26,7 @@ passport.deserializeUser(db.User.deserializeUser());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
+app.use('/api/posts', commentRoutes);
 
 const PORT = process.env.PORT || 5000;
 

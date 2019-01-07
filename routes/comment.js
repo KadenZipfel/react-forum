@@ -6,8 +6,8 @@ const {
   deleteComment
 } = require('../handlers/comment');
 
-router.route('/').post(createComment);
+router.route('/:id').post(createComment);
 
-router.route('/:comment_id').delete(deleteComment);
+router.route('/:id/:comment_id').delete(deleteComment);
 
 module.exports = router;
