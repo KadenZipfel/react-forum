@@ -6,11 +6,9 @@ const authRoutes = require('./routes/auth');
 const db = require('./models');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-const User = require('./models/User');
 
 app.use(cors());
 app.use(bodyParser.json());
-
 app.use(require('express-session')({
   secret: 'keyboard cat',
   resave: false,
@@ -19,9 +17,9 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+passport.use(new LocalStrategy(db.User.authenticate()));
+passport.serializeUser(db.User.serializeUser());
+passport.deserializeUser(db.User.deserializeUser());
 
 app.use('/api/auth', authRoutes);
 
