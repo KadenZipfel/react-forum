@@ -10,8 +10,8 @@ const Main = props => {
     <div className="container">
       <Switch>
         <Route exact path="/" component={Homepage} />
-        <Route exact path="/signin" component={AuthForm} />
-        <Route exact path="/signup" render={props => <AuthForm signUp />} />
+        <Route exact path="/signin" render={props => <AuthForm heading="Log in" />} />
+        <Route exact path="/signup" render={props => <AuthForm signUp heading="Signup" />} />
       </Switch>
     </div>
   );
