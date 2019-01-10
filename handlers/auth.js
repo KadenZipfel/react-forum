@@ -24,15 +24,4 @@ exports.signup = (req, res) => {
 exports.signin = passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/login'
-}), (req, res) => {
-  const user = req.user;
-  res.status(200).json({
-    id: user.id,
-    username: user.username
-  });
-};
-
-exports.signout = (req, res) => {
-  req.logout();
-  res.redirect('/');
-}
+});

@@ -25,3 +25,9 @@ export function authUser(type, userData) {
     });
   }
 };
+
+export function logout() {
+  return dispatch => {
+    dispatch(setCurrentUser({}));
+  }
+}
