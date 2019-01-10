@@ -7,10 +7,11 @@ const postRoutes = require('./routes/post');
 const commentRoutes = require('./routes/comment');
 const db = require('./models');
 const passport = require('passport');
-const LocalStrategy = require('passport-local');
+const LocalStrategy = require('passport-local').Strategy;
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(require('express-session')({
   // We'll hide the secret later
   secret: 'keyboard cat',

@@ -22,7 +22,7 @@ class Navbar extends Component {
               <Link to="/signin">Log in</Link>
             </li>
             <li className="px-3">
-              <Link to="/logout">Log out</Link>
+              <Link to="/signout">Log out</Link>
             </li>
           </ul>
         </div>

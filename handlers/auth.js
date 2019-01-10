@@ -9,22 +9,30 @@ exports.signup = (req, res) => {
       username: req.body.username
     }), req.body.password, (err, user) => {
       if(err) {
-        console.log(err);
+        return console.log(err);
       }
       passport.authenticate('local')(req, res, () => {
-        // res.redirect('/');
+        const user = req.user;
+        return res.status(200).json({
+          id: user.id, 
+          username: user.username
+        });
       });
-      console.log(user);
   });
 };
 
 exports.signin = passport.authenticate('local', {
-  // Change redirects to appropriate locations
   successRedirect: '/',
-  failureRedirect: 'back'
-});
+  failureRedirect: '/login'
+}), (req, res) => {
+  const user = req.user;
+  res.status(200).json({
+    id: user.id,
+    username: user.username
+  });
+};
 
 exports.signout = (req, res) => {
   req.logout();
-  // res.redirect('/');
+  res.redirect('/');
 }
