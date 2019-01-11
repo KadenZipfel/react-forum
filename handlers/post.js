@@ -8,11 +8,7 @@ exports.createPost = (req, res) => {
     if(err) {
       return console.log(err);
     }
-    // post.author.id = user._id
-    // post.author.username = user.username
-    // post.save();
-    console.log('Post added to db: ', post);
-    // res.redirect somewhere appropriate
+    return res.status(200).json(post);
   });
 };
 
