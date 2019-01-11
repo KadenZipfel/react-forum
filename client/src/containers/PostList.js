@@ -17,6 +17,7 @@ class PostList extends Component {
           title={p.title}
           body={p.body}
           key={p._id}
+          id={p._id}
         />
       ));
       return (
