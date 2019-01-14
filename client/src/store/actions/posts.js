@@ -1,6 +1,5 @@
 import {apiCall} from '../../services/api';
-import {LOAD_POSTS} from '../actionTypes';
-import {LOAD_POST} from '../actionTypes';
+import {LOAD_POSTS, LOAD_POST, REMOVE_POST} from '../actionTypes';
 
 export const loadPosts = posts => ({
   type: LOAD_POSTS,
@@ -11,6 +10,27 @@ export const loadPost = post => ({
   type: LOAD_POST,
   post
 });
+
+export const remove = id => ({
+  type: REMOVE_POST,
+  id
+});
+
+export const removePost = id => {
+  return dispatch => {
+    return dispatch(remove(id));
+  };
+};
+
+export const deletePost = id => {
+  return dispatch => {
+    return apiCall('delete', `/api/posts/${id}`)
+      .then(() => dispatch(remove(id)))
+      .catch(err => {
+        console.log(err);
+      }); 
+  };
+};
 
 export const fetchPosts = () => {
   return dispatch => {

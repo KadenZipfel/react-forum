@@ -35,6 +35,6 @@ exports.deletePost = (req, res) => {
     if(err) {
       return console.log(err);
     }
-    console.log('Post deleted');
+    return console.log('Post removed');
   });
 };
