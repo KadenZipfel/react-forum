@@ -21,7 +21,12 @@ exports.signup = (req, res) => {
   });
 };
 
-exports.signin = passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/login'
-});
+exports.signin = (req, res) => {
+  passport.authenticate('local')(req, res, () => {
+    const user = req.user;
+    return res.status(200).json({
+      id: user.id, 
+      username: user.username
+    });
+  }); 
+};

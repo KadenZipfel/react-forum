@@ -1,6 +1,6 @@
 const db = require('../models');
 
-exports.createPost = (req, res) => {
+exports.createPost =  (req, res) => {
   db.Post.create({
     title: req.body.title,
     body: req.body.body
