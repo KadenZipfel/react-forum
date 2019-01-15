@@ -3,7 +3,8 @@ const db = require('../models');
 exports.createPost =  (req, res) => {
   db.Post.create({
     title: req.body.title,
-    body: req.body.body
+    body: req.body.body,
+    author: req.body.user
   }, (err, post) => {
     if(err) {
       return console.log(err);

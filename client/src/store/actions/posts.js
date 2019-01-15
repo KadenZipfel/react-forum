@@ -56,8 +56,8 @@ export const getPost = (id) => {
   };
 };
 
-export const newPost = (title, body) => (dispatch, getState) => {
-  return apiCall('post', '/api/posts', {title, body})
+export const newPost = (title, body, user) => (dispatch, getState) => {
+  return apiCall('post', '/api/posts', {title, body, user})
     .then(res => {})
     .catch(err => console.log(err));
 };

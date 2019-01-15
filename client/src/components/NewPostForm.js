@@ -19,7 +19,7 @@ class NewPostForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.newPost(this.state.title, this.state.body);
+    this.props.newPost(this.state.title, this.state.body, this.props.currentUser.user.id);
     this.props.history.push('/');
   };
 
@@ -49,4 +49,10 @@ class NewPostForm extends Component {
   }
 };
 
-export default connect(null, {newPost})(NewPostForm);
+function mapStateToProps(state) {
+  return {
+    currentUser: state.currentUser
+  }
+}
+
+export default connect(mapStateToProps, {newPost})(NewPostForm);
