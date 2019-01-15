@@ -21,7 +21,7 @@ class ShowPost extends Component {
   }
 
   render() {
-    const {post, removePost, deletePost} = this.props;
+    const {post, removePost, deletePost, currentUser} = this.props;
 
     if(post) {
       return (
@@ -29,7 +29,11 @@ class ShowPost extends Component {
           <h2>{post.title}</h2>
           <p>{post.body}</p>
           <p>{post.comments}</p>
-          <a className="btn btn-danger" onClick={this.clearPost}>Delete</a>
+          {currentUser.isAuthenticated && (
+            currentUser.user.id == post.author && (
+              <a className="btn btn-danger" onClick={this.clearPost}>Delete</a>
+            )
+          )}
         </div>
       );
     }
@@ -41,7 +45,8 @@ class ShowPost extends Component {
 
 function mapStateToProps(state) {
   return {
-    post: state.post
+    post: state.post,
+    currentUser: state.currentUser
   }
 }
 
