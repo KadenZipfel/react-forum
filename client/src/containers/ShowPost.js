@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getPost, removePost, deletePost} from '../store/actions/posts';
+import CommentBox from '../components/CommentBox';
 
 class ShowPost extends Component {
   constructor(props) {
@@ -28,11 +29,13 @@ class ShowPost extends Component {
         <div>
           <h2>{post.title}</h2>
           <p>{post.body}</p>
-          <p>{post.comments}</p>
           {currentUser.isAuthenticated && (
             currentUser.user.id == post.author && (
               <a className="btn btn-danger" onClick={this.clearPost}>Delete</a>
             )
+          )}
+          {currentUser.isAuthenticated && (
+            <CommentBox />
           )}
         </div>
       );

@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import Homepage from '../components/Homepage';
 import AuthForm from '../components/AuthForm';
 import NewPostForm from '../components/NewPostForm';
-import ShowPost from '../components/ShowPost';
+import ShowPost from './ShowPost';
 import {authUser} from '../store/actions/auth';
 import {newPost} from '../store/actions/posts';
 
