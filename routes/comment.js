@@ -3,8 +3,11 @@ const router = express.Router();
 
 const {
   createComment,
-  deleteComment
+  deleteComment,
+  getComments
 } = require('../handlers/comment');
+
+router.route('/:id').get(getComments);
 
 router.route('/:id').post(createComment);
 

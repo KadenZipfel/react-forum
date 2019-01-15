@@ -1,4 +1,4 @@
-import {LOAD_POST, REMOVE_POST} from '../actionTypes';
+import {LOAD_POST, REMOVE_POST, LOAD_COMMENTS} from '../actionTypes';
 
 const post = (state = [], action) => {
   switch(action.type) {

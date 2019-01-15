@@ -9,7 +9,14 @@ exports.createComment = (req, res) => {
     if(err) {
       return console.log(err);
     }
-    return console.log('Comment added to db');
+    db.Post.findById(req.body.id, (err, post) => {
+      if(err) {
+        return console.log(err);
+      }
+      post.comments.push(comment._id);
+      post.save();
+    });
+    return res.status(200).json(comment);
   });
 };
 
@@ -18,6 +25,15 @@ exports.deleteComment = (req, res) => {
     if(err) {
       return console.log(err);
     }
-    console.log('Comment deleted')
+    return res.status(200);
+  });
+};
+
+exports.getComments = (req, res) => {
+  db.Post.findById(req.params.id, (err, post) => {
+    if(err) {
+      return console.log(err);
+    }
+    return res.status(200).json(post.comments);
   });
 };

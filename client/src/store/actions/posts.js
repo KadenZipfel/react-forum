@@ -61,3 +61,9 @@ export const newPost = (title, body, user) => (dispatch, getState) => {
     .then(res => {})
     .catch(err => console.log(err));
 };
+
+export const newComment = (comment, id, user) => (dispatch, getState) => {
+  return apiCall('post', `/api/posts/${id}`, {comment, id, user})
+    .then(res => {})
+    .catch(err => console.log(err));
+};
