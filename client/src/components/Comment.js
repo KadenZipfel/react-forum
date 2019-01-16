@@ -1,13 +1,17 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 
-const Comment = ({text}) => {
-  return (
-    <div>
-      <li className="list-group-item">
-        <p>{text}</p>
-      </li>
-    </div>
-  );
+class Comment extends PureComponent {
+  render() {
+    const {text} = this.props;
+
+    return (
+      <div>
+        <li className="list-group-item">
+          <p>{text}</p>
+        </li>
+      </div>
+    );
+  }
 };
 
 export default Comment;

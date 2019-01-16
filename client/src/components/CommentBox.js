@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {newComment} from '../store/actions/posts';
+import {newComment, getPost} from '../store/actions/posts';
 
 class CommentBox extends Component {
   constructor(props) {
@@ -18,7 +18,11 @@ class CommentBox extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.newComment(this.state.comment, this.props.post._id, this.props.currentUser.user.id);
+    this.setState({
+      comment: ''
+    });
+    this.props.newComment(this.state.comment, this.props.post._id, this.props.currentUser.user.id)
+      .then(() => this.props.getPost(this.props.post._id));
   };
   
   render() {
@@ -48,4 +52,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {newComment})(CommentBox);
+export default connect(mapStateToProps, {newComment, getPost})(CommentBox);

@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 import Comment from '../components/Comment';
 
-class CommentList extends Component {
+class CommentList extends PureComponent {
   render() {
     const {post} = this.props;
 
