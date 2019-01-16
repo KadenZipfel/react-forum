@@ -7,7 +7,7 @@ const {
   getComments
 } = require('../handlers/comment');
 
-router.route('/:id').get(getComments);
+router.route('/:id/comments').get(getComments);
 
 router.route('/:id').post(createComment);
 

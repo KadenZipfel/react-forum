@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getPost, removePost, deletePost} from '../store/actions/posts';
 import CommentBox from '../components/CommentBox';
+import CommentList from './CommentList';
 
 class ShowPost extends Component {
   constructor(props) {
@@ -34,12 +35,16 @@ class ShowPost extends Component {
               <a className="btn btn-danger" onClick={this.clearPost}>Delete</a>
             )
           )}
+          {post.comments && (
+            <CommentList />
+          )}
           {currentUser.isAuthenticated && (
             <CommentBox />
           )}
         </div>
       );
     }
+
     return (
       <div>Something went wrong</div>
     );
