@@ -8,7 +8,7 @@ class CommentList extends PureComponent {
 
     if(true) {
       let commentList = post.comments.map(c => (
-        <Comment text={c.text} key={c._id} id={c._id} />
+        <Comment text={c.text} key={c._id} id={c._id} author={c.author}/>
       ));
       return (
         <div>

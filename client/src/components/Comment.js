@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 import {deleteComment, getPost} from '../store/actions/posts';
+import { stat } from 'fs';
 
 class Comment extends PureComponent {
   constructor(props) {
@@ -13,14 +14,18 @@ class Comment extends PureComponent {
   }
 
   render() {
-    const {text} = this.props;
+    const {text, author, currentUser} = this.props;
 
     return (
       <div>
         <li className="list-group-item">
           <p>{text}</p>
         </li>
-        <a className="btn btn-danger" onClick={this.clearComment}>Delete</a>
+        {currentUser.isAuthenticated && (
+          author == currentUser.user.id && (
+            <a className="btn btn-danger" onClick={this.clearComment}>Delete</a>
+          )
+        )}
       </div>
     );
   }
@@ -28,7 +33,8 @@ class Comment extends PureComponent {
 
 function mapStateToProps(state) {
   return {
-    post: state.post
+    post: state.post,
+    currentUser: state.currentUser
   };
 };
 
