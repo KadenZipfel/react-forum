@@ -24,7 +24,7 @@ class Navbar extends Component {
                   <Link to="/new">New Post</Link>
                 </li>
                 <li className="px-3">
-                  <a onClick={this.logout}>Log out</a>
+                  <button onClick={this.logout}>Log out</button>
                 </li>
               </ul>
             ) : (

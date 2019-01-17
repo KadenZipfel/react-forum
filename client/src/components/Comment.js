@@ -1,13 +1,8 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 import {deleteComment, getPost} from '../store/actions/posts';
-import { stat } from 'fs';
 
 class Comment extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
-
   clearComment = () => {
     this.props.deleteComment(this.props.post._id, this.props.id);
     this.props.getPost(this.props.post._id);
@@ -22,8 +17,8 @@ class Comment extends PureComponent {
           <p>{text}</p>
         </li>
         {currentUser.isAuthenticated && (
-          author == currentUser.user.id && (
-            <a className="btn btn-danger" onClick={this.clearComment}>Delete</a>
+          author === currentUser.user.id && (
+            <button className="btn btn-danger" onClick={this.clearComment}>Delete</button>
           )
         )}
       </div>

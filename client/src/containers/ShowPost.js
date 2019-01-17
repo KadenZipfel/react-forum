@@ -5,10 +5,6 @@ import CommentBox from '../components/CommentBox';
 import CommentList from './CommentList';
 
 class ShowPost extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.props.getPost(this.props.match.params.id);
   }
@@ -23,7 +19,7 @@ class ShowPost extends Component {
   }
 
   render() {
-    const {post, removePost, deletePost, currentUser} = this.props;
+    const {post, currentUser} = this.props;
 
     if(post) {
       return (
@@ -31,8 +27,8 @@ class ShowPost extends Component {
           <h2>{post.title}</h2>
           <p>{post.body}</p>
           {currentUser.isAuthenticated && (
-            currentUser.user.id == post.author && (
-              <a className="btn btn-danger" onClick={this.clearPost}>Delete</a>
+            currentUser.user.id === post.author && (
+              <button className="btn btn-danger" onClick={this.clearPost}>Delete</button>
             )
           )}
           {post.comments && (

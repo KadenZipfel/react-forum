@@ -9,7 +9,7 @@ class PostList extends Component {
   }
 
   render() {
-    const {posts, currentUser} = this.props;
+    const {posts} = this.props;
 
     if(posts) {
       let postList = posts.map(p => (
