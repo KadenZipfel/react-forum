@@ -67,3 +67,11 @@ export const newComment = (comment, id, user) => (dispatch, getState) => {
     .then(res => {})
     .catch(err => console.log(err));
 };
+
+export const deleteComment = (post_id, comment_id) => {
+  return dispatch => {
+    return apiCall('delete', `/api/posts/${post_id}/comment/${comment_id}`)
+      .then(res => {})
+      .catch(err => console.log(err));
+  }
+};

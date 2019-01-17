@@ -21,11 +21,12 @@ exports.createComment = (req, res) => {
 };
 
 exports.deleteComment = (req, res) => {
-  db.Comment.findByIdAndRemove(req.params.comment_id, (err) => {
+  db.Comment.findByIdAndRemove(req.params.comment_id, (err, comment) => {
     if(err) {
       return console.log(err);
     }
-    return res.status(200);
+    console.log('Comment removed');
+    return res.status(200).json();
   });
 };
 
