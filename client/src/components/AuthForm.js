@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 class AuthForm extends Component {
   constructor(props) {
@@ -60,6 +61,12 @@ class AuthForm extends Component {
             {heading}
           </button>
         </form>
+        {signUp && (
+          <p className="mt-2 text-right">Already have an account? <Link to='/signin'>Sign in</Link></p>
+        )}
+        {!signUp && (
+          <p className="mt-2 text-right">Don't have an account yet? <Link to='/signup'>Sign up</Link></p>
+        )}
       </div>
     );
   }
