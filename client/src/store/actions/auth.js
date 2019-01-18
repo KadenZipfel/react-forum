@@ -1,6 +1,6 @@
 import {apiCall} from '../../services/api';
 import {SET_CURRENT_USER} from '../actionTypes';
-import {removeError} from './errors';
+import {removeError, addError} from './errors';
 
 export function setCurrentUser(user) {
   return {
@@ -18,6 +18,7 @@ export function authUser(type, userData) {
         resolve();
       }).catch(err => {
         console.log(err);
+        dispatch(addError(err.message));
         reject();
       }); 
     });

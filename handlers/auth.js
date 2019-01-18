@@ -9,7 +9,7 @@ exports.signup = (req, res) => {
       username: req.body.username
     }), req.body.password, (err, user) => {
       if(err) {
-        return console.log(err);
+        return next(err);  
       }
       passport.authenticate('local')(req, res, () => {
         const user = req.user;

@@ -28,7 +28,7 @@ class ShowPost extends Component {
           <p>{post.body}</p>
           {currentUser.isAuthenticated && (
             currentUser.user.id === post.author && (
-              <button className="btn btn-danger" onClick={this.clearPost}>Delete</button>
+              <a className="delete text-muted" onClick={this.clearPost}>Delete</a>
             )
           )}
           {post.comments && (

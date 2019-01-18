@@ -4,6 +4,7 @@ import PostList from '../containers/PostList';
 const Timeline = props => {
   return (
     <div>
+      <h1>Front Page</h1>
       <PostList />
     </div>
   );

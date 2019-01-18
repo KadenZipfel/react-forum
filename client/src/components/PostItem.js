@@ -1,15 +1,16 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import '../css/postitem.css'
 
 const PostItem = ({title, body, id}) => {
   return (
     <div>
-      <Link to={"/post/" + id}>
-        <li className="list-group-item">
+      <li className="list-group-item postitem">
+        <Link to={"/post/" + id}>
           <h3>{title}</h3>
-          <p>{body}</p>
-        </li>
-      </Link>
+        </Link>
+        <p>{body}</p>
+      </li>
     </div>
   );
 };

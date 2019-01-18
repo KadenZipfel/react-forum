@@ -28,7 +28,11 @@ class AuthForm extends Component {
 
   render() {
     const {email, username, password} = this.state;
-    const {signUp, heading, errors} = this.props;
+    const {signUp, heading, errors, history, removeError} = this.props;
+
+    history.listen(() => {
+      removeError();
+    });
 
     return (
       <div className="container">

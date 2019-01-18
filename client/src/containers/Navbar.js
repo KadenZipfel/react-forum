@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {logout} from '../store/actions/auth';
+import '../css/navbar.css'
 
 class Navbar extends Component {
   logout = e => {
@@ -24,7 +25,7 @@ class Navbar extends Component {
                   <Link to="/new">New Post</Link>
                 </li>
                 <li className="px-3">
-                  <button onClick={this.logout}>Log out</button>
+                  <a onClick={this.logout}>Log out</a>
                 </li>
               </ul>
             ) : (

@@ -7,36 +7,38 @@ import NewPostForm from '../components/NewPostForm';
 import ShowPost from './ShowPost';
 import {authUser} from '../store/actions/auth';
 import {newPost} from '../store/actions/posts';
+import {removeError} from '../store/actions/errors';
+import '../css/main.css';
 
 const Main = props => {
-  const {authUser, errors, currentUser, newPost} = props;
+  const {authUser, errors, removeError, currentUser, newPost} = props;
 
   return (
-    <div className="container">
+    <div className="container main">
       <Switch>
         <Route exact path="/" render={props => {
           return (
-            <Homepage currentUser={currentUser} {...props} />
+            <Homepage errors={errors} currentUser={currentUser} {...props} />
           );
         }} />
         <Route exact path="/signin" render={props => {
           return (
-            <AuthForm heading="Log in" onAuth={authUser} errors={errors} {...props} />
+            <AuthForm removeError={removeError} heading="Log in" onAuth={authUser} errors={errors} {...props} />
           );
         }} />
         <Route exact path="/signup" render={props => {
           return (
-            <AuthForm signUp heading="Signup" onAuth={authUser} errors={errors} {...props} />
+            <AuthForm removeError={removeError} signUp heading="Signup" onAuth={authUser} errors={errors} {...props} />
           );
         }} />
         <Route exact path="/new" render={props => {
           return (
-            <NewPostForm newPost={newPost} {...props} />
+            <NewPostForm errors={errors} newPost={newPost} {...props} />
           );
         }} />
         <Route exact path="/post/:id" render={props => {
           return (
-            <ShowPost {...props} />
+            <ShowPost errors={errors} {...props} />
           );
         }} />
       </Switch>
@@ -51,4 +53,4 @@ function mapStateToProps(state) {
   }
 };
 
-export default withRouter(connect(mapStateToProps, {authUser, newPost})(Main));
+export default withRouter(connect(mapStateToProps, {authUser, newPost, removeError})(Main));

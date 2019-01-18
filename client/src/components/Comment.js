@@ -13,14 +13,14 @@ class Comment extends PureComponent {
 
     return (
       <div>
-        <li className="list-group-item">
+        <li className="list-group-item comment">
           <p>{text}</p>
+          {currentUser.isAuthenticated && (
+            author === currentUser.user.id && (
+              <a className="delete text-muted" onClick={this.clearComment}>Delete</a>
+            )
+          )}
         </li>
-        {currentUser.isAuthenticated && (
-          author === currentUser.user.id && (
-            <button className="btn btn-danger" onClick={this.clearComment}>Delete</button>
-          )
-        )}
       </div>
     );
   }

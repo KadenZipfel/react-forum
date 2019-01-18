@@ -9,6 +9,7 @@ exports.createComment = (req, res) => {
     if(err) {
       return console.log(err);
     }
+    comment.author.username = req.user.username;
     db.Post.findById(req.body.id, (err, post) => {
       if(err) {
         return console.log(err);

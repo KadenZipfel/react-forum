@@ -30,7 +30,7 @@ class CommentBox extends Component {
 
     return (
       <div>
-        <h2>Leave a comment</h2>
+        <h3>Leave a comment</h3>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <input type="text" className="form-control" value={comment}

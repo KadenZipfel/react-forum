@@ -22,7 +22,7 @@ class PostList extends Component {
       ));
       return (
         <div>
-          <ul className="list-group">
+          <ul className="list-group postlist">
             {postList}
           </ul>
         </div>
